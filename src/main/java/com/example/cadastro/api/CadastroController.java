@@ -35,11 +35,16 @@ public class CadastroController {
 
         return "Cadastro realizado com sucesso" + c.getId();
     }
-    @PutMapping
+    @PutMapping("/{id}")
     public String put(@PathVariable ("id") Long id, @RequestBody Cadastro cadastro){
         Cadastro c =service.update(cadastro, id);
 
         return "Cadastro atualizado com sucesso" + c.getId();
+    }
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") Long id){
+        service.delete(id);
+        return "Cadastro removido com sucesso";
     }
 
 

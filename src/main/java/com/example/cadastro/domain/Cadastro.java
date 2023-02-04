@@ -10,7 +10,7 @@ public class Cadastro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome, sexo, nascimento, email, senha ;
+    private String nome, sexo, email, senha ;
 
     public Cadastro() {
         this.id=id;
@@ -45,14 +45,6 @@ public class Cadastro {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
-    }
-
-    public String getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
     }
 
     public String getEmail() {

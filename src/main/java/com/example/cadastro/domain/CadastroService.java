@@ -1,5 +1,6 @@
 package com.example.cadastro.domain;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -29,8 +30,8 @@ public class CadastroService {
 
     }
 
-    public Cadastro update(Cadastro cadastro, Long id){
-        Assert.notNull(cadastro.getId(), "Não foi Possivel inserir o registro !");
+    public Cadastro update(@NotNull Cadastro cadastro, Long id){
+        Assert.notNull(id, "Não foi Possivel inserir o registro !");
 
         Optional <Cadastro> optional= rep.findById(id);
         if(optional.isPresent()){
@@ -47,6 +48,11 @@ public class CadastroService {
 
         }else{
             throw new RuntimeException("Não  foi possivel atualizar o cadastro");
+        }
+    }
+    public void delete(Long id){
+        if(getCadastroById(id).isPresent()){
+            rep.deleteById(id);
         }
     }
 }
